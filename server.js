@@ -34,6 +34,13 @@ app.post('/', function(req,res) {
     })
 })
 
+app.get('/info/:id', function(req,res) {
+    db.place.find({
+        where: {id: req.params.id}
+    }).then( function(place) {
+        res.render('show', {place});
+    })
+})
 
 app.listen( port, function() {
     console.log('server running on ' + port);
